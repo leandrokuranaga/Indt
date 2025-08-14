@@ -1,30 +1,29 @@
-# 🕹️ Anima
+# 🕹️ Indt
 
 Project made to manage insurance proposals and hiring processes.
 
 ## Technical Requirements
 
-Hexagonal Architecture
-Microservices (Proposal and Contract)
-Relational Database
-Clean code, DDD, SOLID, TDD
-Microservices Communication
-.NET 8
-Docker
+Hexagonal Architecture  
+Microservices (Proposal and Contract)  
+Relational Database  
+Clean code, DDD, SOLID, TDD  
+Microservices Communication  
+.NET 8  
+Docker  
 
-## Technical Requirements
 
 ### Proposal Service
 
-Create an insurance proposal
-List proposals
-Change proposal status (InAnalysis, Approved, Rejected)
+Create an insurance proposal  
+List proposals  
+Change proposal status (InAnalysis, Approved, Rejected)  
 
 ### Contract Service
 
-Contract a proposal
-Store contract information (ProposalID, ProposalDate)
-Communicate with Proposal Service to check proposal status
+Contract a proposal  
+Store contract information (ProposalID, ProposalDate)  
+Communicate with Proposal Service to check proposal status  
 
 
 ## Build & Tests
