@@ -6,7 +6,7 @@ namespace Proposal.Domain;
 
 public class Proposal : Entity, IAggregateRoot
 {
-    public string CreationDate { get; set; }
+    public DateTime CreationDate { get; set; }
     public EProposalStatus ProposalStatus { get; set; }
     public EInsuranceType InsuranceType { get; set; }
 
@@ -15,7 +15,7 @@ public class Proposal : Entity, IAggregateRoot
         
     }
     
-    public Proposal(EInsuranceType insuranceType, EProposalStatus proposalStatus, string creationDate )
+    public Proposal(EInsuranceType insuranceType, EProposalStatus proposalStatus, DateTime creationDate )
     {
         CreationDate = creationDate;
         ProposalStatus = proposalStatus;
@@ -24,8 +24,8 @@ public class Proposal : Entity, IAggregateRoot
     
     public static Proposal Create(EInsuranceType insuranceType, EProposalStatus? initialStatus = null)
     {
-        var status = initialStatus ?? EProposalStatus.InAnalysis; 
-        var creationDate = DateTime.UtcNow.ToString("O");
+        var status = initialStatus ?? EProposalStatus.InAnalysis;
+        var creationDate = DateTime.Now;
 
         if (!Enum.IsDefined(typeof(EInsuranceType), insuranceType))
             throw new ArgumentException("Invalid Insurance type", nameof(insuranceType));

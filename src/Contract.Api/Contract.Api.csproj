@@ -9,6 +9,10 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.3" />
@@ -18,6 +22,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Contract.Application\Contract.Application.csproj" />
       <ProjectReference Include="..\Contract.Domain\Contract.Domain.csproj" />
+      <ProjectReference Include="..\Contract.Infra\Contract.Infra.csproj" />
     </ItemGroup>
 
     <ItemGroup>

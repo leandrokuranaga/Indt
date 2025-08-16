@@ -2,12 +2,12 @@
 
 namespace Contract.Domain.Contract.ValueObjects;
 
-public class CPF(string number) : ValueObject
+public class CPF(string value) : ValueObject
 {
     public const int Length = 11;
 
-    public string Value => number;
-    public bool IsValid => Validate(number);
+    public string Value => value;
+    public bool IsValid => Validate(value);
 
     public static CPF Create(string input)
     {
@@ -22,15 +22,15 @@ public class CPF(string number) : ValueObject
     }
 
     public override string ToString() =>
-        $"{number[..3]}.{number.Substring(3, 3)}.{number.Substring(6, 3)}-{number.Substring(9, 2)}";
+        $"{value[..3]}.{value.Substring(3, 3)}.{value.Substring(6, 3)}-{value.Substring(9, 2)}";
 
     protected override IEnumerable<object> GetAtomicValues()
     {
-        yield return number;
+        yield return value;
     }
 
-    private static string OnlyDigits(string value) =>
-        new(value.Where(char.IsDigit).ToArray());
+    private static string OnlyDigits(string v) =>
+        new(v.Where(char.IsDigit).ToArray());
 
     private static bool Validate(string digits)
     {
