@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="MapEntities\Seeds\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-rc.1.efcore.9.0.0" />
     </ItemGroup>
 

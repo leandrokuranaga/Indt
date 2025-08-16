@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="MapEntities\Seeds\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Contract.Domain\Contract.Domain.csproj" />
     </ItemGroup>
 
