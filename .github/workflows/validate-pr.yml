@@ -25,8 +25,8 @@ jobs:
 
       - name: Create temporary .sln from .slnx
         run: |
-          dotnet new sln -n Anima
-          find . -name "*.csproj" -exec dotnet sln Anima.sln add {} \;
+          dotnet new sln -n Indt
+          find . -name "*.csproj" -exec dotnet sln Indt.sln add {} \;
 
       - name: Restore dependencies
         run: dotnet restore *.sln
