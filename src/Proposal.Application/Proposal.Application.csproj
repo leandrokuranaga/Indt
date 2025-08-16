@@ -7,8 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Proposal\Models\Request\" />
-      <Folder Include="Proposal\Models\Response\" />
       <Folder Include="Validators\ProposalValidators\" />
     </ItemGroup>
 

@@ -1,6 +1,14 @@
-﻿namespace Proposal.Application;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Proposal.Application.Proposal.Services;
 
-public class ApplicationModuleDependency
+namespace Proposal.Application;
+
+public static class ApplicationModuleDependency
 {
-    
+    public static IServiceCollection AddApplicationModule(this IServiceCollection services)
+    {
+        services.AddScoped<IProposalService, ProposalService>();
+
+        return services;
+    }
 }
