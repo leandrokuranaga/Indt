@@ -6,4 +6,16 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="MapEntities\Seeds\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Contract.Domain\Contract.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    </ItemGroup>
+
 </Project>

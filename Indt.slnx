@@ -1,17 +1,33 @@
 <Solution>
   <Folder Name="/src/" />
-  <Folder Name="/src/Contract/">
+  <Folder Name="/src/Contract/" />
+  <Folder Name="/src/Contract/Adapters/" />
+  <Folder Name="/src/Contract/Adapters/Driven/">
+    <Project Path="src/Contract.Infra/Contract.Infra.csproj" />
+  </Folder>
+  <Folder Name="/src/Contract/Adapters/Driving/">
     <Project Path="src/Contract.Api/Contract.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Contract/Core/">
     <Project Path="src/Contract.Application/Contract.Application.csproj" />
     <Project Path="src/Contract.Domain/Contract.Domain.csproj" />
-    <Project Path="src/Contract.Infra/Contract.Infra.csproj" />
+  </Folder>
+  <Folder Name="/src/Contract/Tests/">
     <Project Path="test/Contract.Unit.Tests/Contract.Unit.Tests.csproj" />
   </Folder>
-  <Folder Name="/src/Proposal/">
+  <Folder Name="/src/Proposal/" />
+  <Folder Name="/src/Proposal/Adapters/" />
+  <Folder Name="/src/Proposal/Adapters/Driven/">
+    <Project Path="src/Proposal.Infra/Proposal.Infra.csproj" />
+  </Folder>
+  <Folder Name="/src/Proposal/Adapters/Driving/">
     <Project Path="src/Proposal.Api/Proposal.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Proposal/Core/">
     <Project Path="src/Proposal.Application/Proposal.Application.csproj" />
     <Project Path="src/Proposal.Domain/Proposal.Domain.csproj" />
-    <Project Path="src/Proposal.Infra/Proposal.Infra.csproj" />
+  </Folder>
+  <Folder Name="/src/Proposal/Tests/">
     <Project Path="test/Proposal.Unit.Tests/Proposal.Unit.Tests.csproj" />
   </Folder>
 </Solution>

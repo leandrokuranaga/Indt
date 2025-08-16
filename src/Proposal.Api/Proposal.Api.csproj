@@ -4,14 +4,21 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+        <PackageReference Include="Serilog" Version="4.3.1-dev-02373" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="9.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
+      <ProjectReference Include="..\Proposal.Application\Proposal.Application.csproj" />
+      <ProjectReference Include="..\Proposal.Domain\Proposal.Domain.csproj" />
     </ItemGroup>
 
 </Project>
