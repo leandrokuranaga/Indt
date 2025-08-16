@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Proposal.Api.Extensions;
 using Proposal.Api.Middlewares;
 using Proposal.Infra;
+using Proposal.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,9 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddGlobalCorsPolicy();
 
 builder.Services.AddApiVersioningConfiguration();
+
+builder.Services.AddInfraModuleDependency();
+builder.Services.AddApplicationModule();
 
 builder.Services.AddSwaggerDocumentation();
 
