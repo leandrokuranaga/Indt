@@ -21,7 +21,7 @@ public class ProposalService(
     {
         Validate(request, new CreateProposalRequestValidator());
 
-        var proposal = Domain.Proposal.Create(request.InsuranceType);
+        var proposal = Proposal.Domain.Proposal.Proposal.Create(request.InsuranceType);
         
         await repository.InsertOrUpdateAsync(proposal);
         await repository.SaveChangesAsync();

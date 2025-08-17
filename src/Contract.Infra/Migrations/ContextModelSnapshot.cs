@@ -52,7 +52,7 @@ namespace Contract.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            ContractDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractDate = new DateTime(2025, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             InsuranceNameHolder = "João da Silva",
                             ProposalId = 1,
                             ProposalStatus = "Approved"
@@ -60,7 +60,7 @@ namespace Contract.Infra.Migrations
                         new
                         {
                             Id = 2,
-                            ContractDate = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractDate = new DateTime(2025, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             InsuranceNameHolder = "Maria Oliveira",
                             ProposalId = 2,
                             ProposalStatus = "Approved"
@@ -68,7 +68,7 @@ namespace Contract.Infra.Migrations
                         new
                         {
                             Id = 3,
-                            ContractDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractDate = new DateTime(2025, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             InsuranceNameHolder = "Carlos Pereira",
                             ProposalId = 3,
                             ProposalStatus = "Approved"
@@ -76,7 +76,7 @@ namespace Contract.Infra.Migrations
                         new
                         {
                             Id = 4,
-                            ContractDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractDate = new DateTime(2025, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             InsuranceNameHolder = "Ana Souza",
                             ProposalId = 4,
                             ProposalStatus = "Approved"
@@ -84,7 +84,7 @@ namespace Contract.Infra.Migrations
                         new
                         {
                             Id = 5,
-                            ContractDate = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractDate = new DateTime(2025, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             InsuranceNameHolder = "Pedro Santos",
                             ProposalId = 5,
                             ProposalStatus = "Approved"

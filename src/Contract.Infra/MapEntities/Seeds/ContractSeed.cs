@@ -2,6 +2,7 @@
 namespace Contract.Infra.MapEntities.Seeds;
 
 using Contract.Domain.Contract.Enums;
+using Contract.Domain.ContractAggregate.ValueObjects;
 
 public static class ContractSeed
 {
@@ -10,7 +11,7 @@ public static class ContractSeed
         new
         {
             Id = 1,
-            ContractDate = new DateTime(2024, 12, 1),
+            ContractDate = new UtcDate(DateTime.SpecifyKind(new DateTime(2025, 04, 01), DateTimeKind.Utc)),
             ProposalId = 1,
             InsuranceNameHolder = "João da Silva",
             ProposalStatus = ProposalStatusEnum.Approved
@@ -18,7 +19,7 @@ public static class ContractSeed
         new
         {
             Id = 2,
-            ContractDate = new DateTime(2024, 12, 5),
+            ContractDate = new UtcDate(DateTime.SpecifyKind(new DateTime(2025, 04, 01), DateTimeKind.Utc)),
             ProposalId = 2,
             InsuranceNameHolder = "Maria Oliveira",
             ProposalStatus = ProposalStatusEnum.Approved
@@ -26,7 +27,7 @@ public static class ContractSeed
         new
         {
             Id = 3,
-            ContractDate = new DateTime(2025, 1, 3),
+            ContractDate = new UtcDate(DateTime.SpecifyKind(new DateTime(2025, 04, 01), DateTimeKind.Utc)),
             ProposalId = 3,
             InsuranceNameHolder = "Carlos Pereira",
             ProposalStatus = ProposalStatusEnum.Approved
@@ -34,7 +35,7 @@ public static class ContractSeed
         new
         {
             Id = 4,
-            ContractDate = new DateTime(2025, 1, 10),
+            ContractDate = new UtcDate(DateTime.SpecifyKind(new DateTime(2025, 04, 01), DateTimeKind.Utc)),
             ProposalId = 4,
             InsuranceNameHolder = "Ana Souza",
             ProposalStatus = ProposalStatusEnum.Approved
@@ -42,7 +43,7 @@ public static class ContractSeed
         new
         {
             Id = 5,
-            ContractDate = new DateTime(2025, 1, 15),
+            ContractDate = new UtcDate(DateTime.SpecifyKind(new DateTime(2025, 04, 01), DateTimeKind.Utc)),
             ProposalId = 5,
             InsuranceNameHolder = "Pedro Santos",
             ProposalStatus = ProposalStatusEnum.Approved

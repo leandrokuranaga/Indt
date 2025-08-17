@@ -2,7 +2,7 @@
 using Proposal.Domain.Enums;
 using IAggregateRoot = Proposal.Domain.SeedWork.IAggregateRoot;
 
-namespace Proposal.Domain;
+namespace Domain.Proposal;
 
 public class Proposal : Entity, IAggregateRoot
 {
@@ -12,16 +12,16 @@ public class Proposal : Entity, IAggregateRoot
 
     public Proposal()
     {
-        
+
     }
-    
-    public Proposal(EInsuranceType insuranceType, EProposalStatus proposalStatus, DateTime creationDate )
+
+    public Proposal(EInsuranceType insuranceType, EProposalStatus proposalStatus, DateTime creationDate)
     {
         CreationDate = creationDate;
         ProposalStatus = proposalStatus;
         InsuranceType = insuranceType;
     }
-    
+
     public static Proposal Create(EInsuranceType insuranceType)
     {
         if (!Enum.IsDefined(typeof(EInsuranceType), insuranceType))

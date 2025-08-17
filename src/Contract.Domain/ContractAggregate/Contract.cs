@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Contract.Domain.Contract.Enums;
 using Contract.Domain.Contract.ValueObjects;
+using Contract.Domain.ContractAggregate.ValueObjects;
 using Contract.Domain.SeedWork.Exceptions;
 using IAggregateRoot = Contract.Domain.SeedWork.IAggregateRoot;
 
@@ -8,10 +9,10 @@ namespace Contract.Domain.Contract;
 
 public class Contract : Entity, IAggregateRoot
 {
-    public DateTime ContractDate { get; set; }
+    public UtcDate ContractDate { get; set; }
     public int ProposalId { get; set; }
     public string InsuranceNameHolder { get; set; }
-    public string ProposalStatus { get; set; }
+    public ProposalStatusEnum ProposalStatus { get; set; }
     public CPF CPF { get; set; }
     public Money MonthlyBill { get; set; }
     
@@ -28,7 +29,7 @@ public class Contract : Entity, IAggregateRoot
         Money monthlyBill
         )
     {
-        ContractDate = contractDate;
+        ContractDate = new UtcDate(contractDate);
         ProposalId = proposalId;
         InsuranceNameHolder = insuranceNameHolder;
         CPF = cpf;
@@ -37,13 +38,13 @@ public class Contract : Entity, IAggregateRoot
     
     public static Contract Create(
         int proposalId,
-        string proposalStatus,
+        ProposalStatusEnum proposalStatus,
         string insuranceNameHolder,
         CPF cpf,
         Money monthlyBill,
         DateTime? contractDate = null)
     {
-        if (proposalStatus != ProposalStatusEnum.Approved.ToString())
+        if (proposalStatus != ProposalStatusEnum.Approved)
             throw new BusinessRulesException("Proposal not approved to proceed");
 
         if (string.IsNullOrWhiteSpace(insuranceNameHolder))
@@ -57,10 +58,11 @@ public class Contract : Entity, IAggregateRoot
             proposalId,
             insuranceNameHolder.Trim(),
             cpf,
-            monthlyBill);
+            monthlyBill)
+        {
+            ProposalStatus = proposalStatus
+        };
 
-        contract.ProposalStatus = proposalStatus;
-        
         return contract;
     }
     

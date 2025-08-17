@@ -12,6 +12,13 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace Proposal.Api.Controllers;
 
+/// <summary>
+/// Controller used to manage proposals operations, such as creation, retrieval and management
+/// </summary>
+[ApiController]
+[ApiVersion("1.0")]
+[ApiExplorerSettings(GroupName = "v1")]
+[Route("api/v{version:apiVersion}/[controller]")]
 public class ProposalController(
     IProposalService proposalService,
     INotification notification

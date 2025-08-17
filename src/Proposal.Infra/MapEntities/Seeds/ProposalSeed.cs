@@ -4,7 +4,7 @@ namespace Proposal.Infra.MapEntities.Seeds;
 
 public static class ProposalSeed
 {
-    public static List<Domain.Proposal> Proposals()
+    public static List<Domain.Proposal.Proposal> Proposals()
     {
         var creationDate1 = new DateTime(2023, 10, 1);
         var creationDate2 = creationDate1.AddDays(7);

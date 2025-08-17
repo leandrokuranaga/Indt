@@ -44,7 +44,7 @@ public class ContractService(
     
     public async Task<ContractResponse> GetContractByIdAsync(int contractId)
     {
-        var contract = await repository.GetByIdAsync(contractId, noTracking: true);
+        var contract = await repository.GetByIdAsync(contractId, noTracking: false);
         if (contract == null)
         {
             notification.AddNotification("Contract", "Contract not found", NotificationModel.ENotificationType.NotFound);

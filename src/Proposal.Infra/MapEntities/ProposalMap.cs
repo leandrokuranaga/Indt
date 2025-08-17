@@ -4,16 +4,19 @@ using Proposal.Infra.MapEntities.Seeds;
 
 namespace Proposal.Infra.MapEntities;
 
-public class ProposalMap: IEntityTypeConfiguration<Domain.Proposal>
+public class ProposalMap: IEntityTypeConfiguration<Domain.Proposal.Proposal>
 {
-    public void Configure(EntityTypeBuilder<Domain.Proposal> builder)
+    public void Configure(EntityTypeBuilder<Domain.Proposal.Proposal> builder)
     {
         builder.ToTable("Proposals");
 
         builder.HasKey(p => p.Id);
 
         builder.Property(p => p.CreationDate)
-            .IsRequired();
+                .HasConversion(
+                       v => v.Value,
+                       v => new UtcDate(v))
+                .IsRequired();
         
         builder.Property(c => c.ProposalStatus)
             .IsRequired()

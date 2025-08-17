@@ -16,15 +16,16 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<Context>(options =>
     options.UseNpgsql(connectionString));
 
-builder.Services.AddCustomMvc();
-
-builder.Services.AddInfraModuleDependency();
-builder.Services.AddApplicationModule();
-builder.Services.AddInfraHttp(builder.Configuration);
-
 builder.Services.AddGlobalCorsPolicy();
 
 builder.Services.AddApiVersioningConfiguration();
+
+builder.Services.AddInfraModuleDependency();
+builder.Services.AddApplicationModule();
+
+builder.Services.AddCustomMvc();
+
+builder.Services.AddInfraHttp(builder.Configuration);
 
 builder.Services.AddSwaggerDocumentation();
 

@@ -9,7 +9,7 @@ public class Context : DbContext
         Database.Migrate();
     }
     
-    public DbSet<Domain.Proposal> Proposals { get; set; }
+    public DbSet<Domain.Proposal.Proposal> Proposals { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
