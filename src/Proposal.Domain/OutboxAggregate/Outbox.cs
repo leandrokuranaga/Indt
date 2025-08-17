@@ -14,12 +14,12 @@ namespace Proposal.Domain.OutboxAggregate
             
         }
 
-        public Outbox(string type, string content)
+        public Outbox(string type, string content, DateTime occuredOn, DateTime? processedOn = null)
         {
             Type = type;
             Content = content;
-            OccuredOn = DateTime.UtcNow;
-            ProcessedOn = null;
+            OccuredOn = occuredOn;
+            ProcessedOn = processedOn;
         }
     }
 }

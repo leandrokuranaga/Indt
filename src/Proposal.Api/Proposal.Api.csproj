@@ -6,6 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <UserSecretsId>b72da5b4-be59-4a33-a294-dcaecf322b20</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..</DockerfileContext>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +16,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
         <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
         <PackageReference Include="Rebus" Version="8.8.0" />
         <PackageReference Include="Rebus.RabbitMq" Version="10.0.2" />
@@ -26,7 +29,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Contract.Application\Contract.Application.csproj" />
       <ProjectReference Include="..\Proposal.Application\Proposal.Application.csproj" />
       <ProjectReference Include="..\Proposal.Domain\Proposal.Domain.csproj" />
       <ProjectReference Include="..\Proposal.Infra.HostedService\Proposal.Infra.HostedService.csproj" />

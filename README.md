@@ -25,6 +25,12 @@ Contract a proposal
 Store contract information (ProposalID, ProposalDate)  
 Communicate with Proposal Service to check proposal status  
 
+### Links
+
+https://github.com/leandrokuranaga/Indt/wiki
+https://github.com/users/leandrokuranaga/projects/21
+
+
 
 ## Build & Tests
 | CI | Status |

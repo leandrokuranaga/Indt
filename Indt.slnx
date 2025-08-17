@@ -32,4 +32,7 @@
   <Folder Name="/src/Proposal/Tests/">
     <Project Path="test/Proposal.Unit.Tests/Proposal.Unit.Tests.csproj" />
   </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>
