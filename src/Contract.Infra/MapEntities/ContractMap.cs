@@ -1,20 +1,27 @@
-﻿// src/Contract.Infra/MapEntities/ContractMap.cs
+﻿using Contract.Domain.ContractAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Contract.Infra.MapEntities;
 
-public class ContractMap : IEntityTypeConfiguration<Domain.Contract.Contract>
+public class ContractMap : IEntityTypeConfiguration<ContractAggregate.Domain.Contract>
 {
-    public void Configure(EntityTypeBuilder<Domain.Contract.Contract> builder)
+    public void Configure(EntityTypeBuilder<ContractAggregate.Domain.Contract> builder)
     {
         builder.ToTable("Contracts");
 
         builder.HasKey(c => c.Id);
 
-        builder.Property(c => c.ContractDate).IsRequired();
+        builder.Property(c => c.ContractDate)
+            .IsRequired()
+            .HasConversion(
+                v => v.Value,
+                v => new UtcDate(v));
+
         builder.Property(c => c.ProposalId).IsRequired();
+
         builder.Property(c => c.InsuranceNameHolder).IsRequired();
+
         builder.Property(c => c.ProposalStatus)
             .IsRequired()
             .HasConversion<string>();

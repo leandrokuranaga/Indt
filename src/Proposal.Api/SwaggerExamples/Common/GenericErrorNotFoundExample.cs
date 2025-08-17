@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Contract.Application.Common;
-using Contract.Domain.SeedWork;
+using Proposal.Application.Common;
+using Proposal.Domain.SeedWork;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace Proposal.Api.SwaggerExamples.Commons;

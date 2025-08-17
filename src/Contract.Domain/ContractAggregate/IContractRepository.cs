@@ -1,6 +1,7 @@
-﻿using Contract.Domain.SeedWork;
+﻿
+using Contract.Domain.SeedWork;
 
-namespace Contract.Domain.Contract;
+namespace ContractAggregate.Domain;
 
 public interface IContractRepository : IBaseRepository<Contract>, IUnitOfWork
 {

@@ -10,6 +10,13 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace Contract.Api.Controllers;
 
+/// <summary>
+/// Controller used to manage Contract operations, such as creation, retrieval and management
+/// </summary>
+[ApiController]
+[ApiVersion("1.0")]
+[ApiExplorerSettings(GroupName = "v1")]
+[Route("api/v{version:apiVersion}/[controller]")]
 public class ContractController(
     IContractService contractService,
     INotification notification

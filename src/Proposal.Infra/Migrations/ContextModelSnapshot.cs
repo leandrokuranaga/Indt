@@ -22,7 +22,33 @@ namespace Proposal.Infra.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("Proposal.Domain.Proposal", b =>
+            modelBuilder.Entity("Proposal.Domain.OutboxAggregate.Outbox", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("OccuredOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("ProcessedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Outbox", (string)null);
+                });
+
+            modelBuilder.Entity("Proposal.Domain.ProposalAggregate.Proposal", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,6 +58,10 @@ namespace Proposal.Infra.Migrations
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("InsuranceNameHolder")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("InsuranceType")
                         .IsRequired()
@@ -49,17 +79,95 @@ namespace Proposal.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreationDate = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            InsuranceNameHolder = "John Doe",
                             InsuranceType = "Life",
                             ProposalStatus = "Approved"
                         },
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2023, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreationDate = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            InsuranceNameHolder = "Jane Doe",
                             InsuranceType = "Health",
                             ProposalStatus = "Approved"
                         });
+                });
+
+            modelBuilder.Entity("Proposal.Domain.ProposalAggregate.Proposal", b =>
+                {
+                    b.OwnsOne("Proposal.Domain.ProposalAggregate.ValueObjects.CPF", "CPF", b1 =>
+                        {
+                            b1.Property<int>("ProposalId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasMaxLength(11)
+                                .HasColumnType("varchar(11)")
+                                .HasColumnName("CPF");
+
+                            b1.HasKey("ProposalId");
+
+                            b1.ToTable("Proposals");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProposalId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    ProposalId = 1,
+                                    Value = "07038612042"
+                                },
+                                new
+                                {
+                                    ProposalId = 2,
+                                    Value = "20791888010"
+                                });
+                        });
+
+                    b.OwnsOne("Proposal.Domain.ProposalAggregate.ValueObjects.Money", "MonthlyBill", b1 =>
+                        {
+                            b1.Property<int>("ProposalId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Currency")
+                                .IsRequired()
+                                .HasMaxLength(3)
+                                .HasColumnType("varchar(3)");
+
+                            b1.Property<decimal>("Value")
+                                .HasPrecision(18, 2)
+                                .HasColumnType("decimal(18,2)");
+
+                            b1.HasKey("ProposalId");
+
+                            b1.ToTable("Proposals");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProposalId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    ProposalId = 1,
+                                    Currency = "BRL",
+                                    Value = 149.90m
+                                },
+                                new
+                                {
+                                    ProposalId = 2,
+                                    Currency = "BRL",
+                                    Value = 199.50m
+                                });
+                        });
+
+                    b.Navigation("CPF")
+                        .IsRequired();
+
+                    b.Navigation("MonthlyBill")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

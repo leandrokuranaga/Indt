@@ -10,7 +10,10 @@ public class CreateProposalExample : IExamplesProvider<ProposalRequest>
     {
         return new ProposalRequest
         {
-            InsuranceType = EInsuranceType.Car
+            InsuranceType = EInsuranceType.Car,
+            InsuranceNameHolder = "John Doe",
+            CPF = "63674544032",
+            MonthlyBill = 199.99m
         };
     }
 }

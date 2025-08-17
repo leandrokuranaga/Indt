@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Contract.Domain\Contract.Domain.csproj" />
-      <ProjectReference Include="..\Contract.Infra.CrossCutting.Http\Contract.Infra.CrossCutting.Http.csproj" />
     </ItemGroup>
 
     <ItemGroup>
