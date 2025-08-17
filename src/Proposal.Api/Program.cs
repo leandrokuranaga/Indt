@@ -1,9 +1,12 @@
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Proposal.Api.Extensions;
 using Proposal.Api.Middlewares;
-using Proposal.Infra;
 using Proposal.Application;
+using Proposal.Infra;
+using Proposal.Infra.HostedService;
+using Rebus.Config;
+using Rebus.Routing.TypeBased;
+using System.Diagnostics.CodeAnalysis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +18,16 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<Context>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
 
+builder.Services.AddHostedService<OutboxProcessorService>();
+
+builder.Services.AddRebus(configure => configure
+    .Transport(t => t.UseRabbitMqAsOneWayClient(
+        builder.Configuration.GetConnectionString("Rabbitmq")))
+    .Routing(r => r.TypeBased()
+        .MapFallback("proposal-queue")));
+
 builder.Services.AddGlobalCorsPolicy();
+builder.Services.AddCustomMvc();
 
 builder.Services.AddApiVersioningConfiguration();
 
@@ -33,6 +45,9 @@ app.UseSwaggerDocumentation();
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+
+app.UseDeveloperExceptionPage();
 
 app.Run();
 

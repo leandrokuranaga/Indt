@@ -1,13 +1,12 @@
-﻿// src/Contract.Infra/MapEntities/ContractMap.cs
-using Contract.Domain.ContractAggregate.ValueObjects;
+﻿using Contract.Domain.ContractAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Contract.Infra.MapEntities;
 
-public class ContractMap : IEntityTypeConfiguration<Domain.Contract.Contract>
+public class ContractMap : IEntityTypeConfiguration<ContractAggregate.Domain.Contract>
 {
-    public void Configure(EntityTypeBuilder<Domain.Contract.Contract> builder)
+    public void Configure(EntityTypeBuilder<ContractAggregate.Domain.Contract> builder)
     {
         builder.ToTable("Contracts");
 

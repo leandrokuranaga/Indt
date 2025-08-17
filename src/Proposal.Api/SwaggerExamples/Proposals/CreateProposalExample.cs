@@ -1,5 +1,6 @@
 ﻿using Proposal.Application.Proposal.Models.Request;
 using Proposal.Domain.Enums;
+using Proposal.Domain.ProposalAggregate.ValueObjects;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace Proposal.Api.SwaggerExamples.Proposals;
@@ -10,7 +11,9 @@ public class CreateProposalExample : IExamplesProvider<ProposalRequest>
     {
         return new ProposalRequest
         {
-            InsuranceType = EInsuranceType.Car
+            InsuranceType = EInsuranceType.Car,
+            InsuranceNameHolder = "John Doe",
+            CPF = "63674544032",
         };
     }
 }

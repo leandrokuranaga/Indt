@@ -1,31 +1,37 @@
 ﻿using Proposal.Domain.Enums;
+using Proposal.Domain.Proposal.Proposal.ValueObjects;
 
 namespace Proposal.Infra.MapEntities.Seeds;
 
 public static class ProposalSeed
 {
-    public static List<Domain.Proposal.Proposal> Proposals()
+    public static List<Domain.ProposalAggregate.Proposal> Proposals()
     {
-        var creationDate1 = new DateTime(2023, 10, 1);
-        var creationDate2 = creationDate1.AddDays(7);
-        
         return
         [
-            new Domain.Proposal
+            new Domain.ProposalAggregate.Proposal
             {
                 Id = 1,
-                CreationDate = creationDate1,
+                CreationDate = new UtcDate(DateTime.SpecifyKind(new DateTime(2023, 04, 01), DateTimeKind.Utc)),
                 ProposalStatus = EProposalStatus.Approved,
                 InsuranceType = EInsuranceType.Life,
+                InsuranceNameHolder = "John Doe",
             },
             
-            new Domain.Proposal
+            new Domain.ProposalAggregate.Proposal
             {
                 Id = 2,
-                CreationDate = creationDate2,
+                CreationDate = new UtcDate(DateTime.SpecifyKind(new DateTime(2023, 04, 01), DateTimeKind.Utc)),
                 ProposalStatus = EProposalStatus.Approved,
                 InsuranceType = EInsuranceType.Health,
+                InsuranceNameHolder = "Jane Doe",
             }
         ];
     }
+
+    public static IEnumerable<object> CpfOwned() =>
+    [
+        new { ProposalId = 1, Value = "07038612042" },
+        new { ProposalId = 2, Value = "20791888010" }
+    ];
 }

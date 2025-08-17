@@ -6,43 +6,46 @@ using Swashbuckle.AspNetCore.Filters;
 namespace Proposal.Api.Extensions;
 
 [ExcludeFromCodeCoverage]
-    public static class SwaggerSetupExtensions
+public static class SwaggerSetupExtensions
+{
+    public static void AddSwaggerDocumentation(this IServiceCollection services)
     {
-        public static void AddSwaggerDocumentation(this IServiceCollection services)
+        services.AddSwaggerGen(c =>
         {
-            services.AddSwaggerGen(c =>
+            c.SwaggerDoc("v1", new OpenApiInfo
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Proposal API",
-                    Version = "v1",
-                    Description = "Proposal API"
-                });
-
-                c.DocInclusionPredicate((docName, apiDesc) =>
-                {
-                    var groupName = apiDesc.GroupName;
-                    return groupName == docName;
-                });
-
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
-
-                c.ExampleFilters();
-                c.OperationFilter<SetApplicationJsonAsDefaultFilter>();
-                c.EnableAnnotations();
-                c.SchemaFilter<SuccessResponseSchemaFilter>(); 
+                Title = "Proposal API",
+                Version = "v1",
+                Description = "Proposal API"
             });
-            services.AddSwaggerExamplesFromAssemblies(Assembly.GetExecutingAssembly());
-        }
-        public static void UseSwaggerDocumentation(this IApplicationBuilder app)
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
+
+            c.DocInclusionPredicate((docName, apiDesc) =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proposal API v1");
-                c.RoutePrefix = "swagger";
+                var groupName = apiDesc.GroupName;
+                return groupName == docName;
             });
-        }
+
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
+
+            c.CustomSchemaIds(t => (t.FullName ?? t.Name).Replace("+", "."));
+
+            c.ExampleFilters();
+            c.OperationFilter<SetApplicationJsonAsDefaultFilter>();
+            c.EnableAnnotations();
+            c.SchemaFilter<SuccessResponseSchemaFilter>();
+        });
+        services.AddSwaggerExamplesFromAssemblies(Assembly.GetExecutingAssembly());
     }
+
+    public static void UseSwaggerDocumentation(this IApplicationBuilder app)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proposal API v1");
+            c.RoutePrefix = "swagger";
+        });
+    }
+}

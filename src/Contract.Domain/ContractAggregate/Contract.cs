@@ -5,7 +5,7 @@ using Contract.Domain.ContractAggregate.ValueObjects;
 using Contract.Domain.SeedWork.Exceptions;
 using IAggregateRoot = Contract.Domain.SeedWork.IAggregateRoot;
 
-namespace Contract.Domain.Contract;
+namespace ContractAggregate.Domain;
 
 public class Contract : Entity, IAggregateRoot
 {

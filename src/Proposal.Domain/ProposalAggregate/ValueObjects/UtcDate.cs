@@ -6,13 +6,7 @@ namespace Proposal.Domain.Proposal.Proposal.ValueObjects
     {
         public DateTime Value { get; }
 
-        public UtcDate(DateTime value)
-        {
-            if (value.Kind != DateTimeKind.Utc)
-                throw new ArgumentException("Date should be in UTC.");
-
-            Value = value;
-        }
+        public UtcDate(DateTime value) => Value = value;
 
         protected override IEnumerable<object> GetAtomicValues()
         {

@@ -9,7 +9,7 @@ public class Context: DbContext
         Database.Migrate();
     }
     
-    public DbSet<Domain.Contract.Contract> Contracts { get; set; }
+    public DbSet<ContractAggregate.Domain.Contract> Contracts { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

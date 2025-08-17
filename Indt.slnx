@@ -3,8 +3,8 @@
   <Folder Name="/src/Contract/" />
   <Folder Name="/src/Contract/Adapters/" />
   <Folder Name="/src/Contract/Adapters/Driven/">
+    <Project Path="src/Contract.Infra.HostedService/Contract.Infra.MessageBus.csproj" Id="ee9ace0d-ed0e-415f-a1fc-875c88325e77" />
     <Project Path="src/Contract.Infra/Contract.Infra.csproj" />
-    <Project Path="src\Contract.Infra.CrossCutting.Http\Contract.Infra.CrossCutting.Http.csproj" Type="Classic C#" />
   </Folder>
   <Folder Name="/src/Contract/Adapters/Driving/">
     <Project Path="src/Contract.Api/Contract.Api.csproj" />
@@ -19,6 +19,7 @@
   <Folder Name="/src/Proposal/" />
   <Folder Name="/src/Proposal/Adapters/" />
   <Folder Name="/src/Proposal/Adapters/Driven/">
+    <Project Path="src/Proposal.Infra.HostedService/Proposal.Infra.HostedService.csproj" Id="1d0064c0-02bd-4e9d-ad2f-e4ac45c9a965" />
     <Project Path="src/Proposal.Infra/Proposal.Infra.csproj" />
   </Folder>
   <Folder Name="/src/Proposal/Adapters/Driving/">

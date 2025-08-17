@@ -4,6 +4,5 @@ public enum EProposalStatus
 {
     InAnalysis,
     Approved,
-    Refused,
-    Expired
+    Refused
 }

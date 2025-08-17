@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <UserSecretsId>b72da5b4-be59-4a33-a294-dcaecf322b20</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +14,10 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
+        <PackageReference Include="Rebus" Version="8.8.0" />
+        <PackageReference Include="Rebus.RabbitMq" Version="10.0.2" />
+        <PackageReference Include="Rebus.ServiceProvider" Version="10.5.0" />
         <PackageReference Include="Serilog" Version="4.3.1-dev-02373" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.3" />
@@ -21,9 +26,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Contract.Api\Contract.Api.csproj" />
+      <ProjectReference Include="..\Contract.Application\Contract.Application.csproj" />
       <ProjectReference Include="..\Proposal.Application\Proposal.Application.csproj" />
       <ProjectReference Include="..\Proposal.Domain\Proposal.Domain.csproj" />
+      <ProjectReference Include="..\Proposal.Infra.HostedService\Proposal.Infra.HostedService.csproj" />
       <ProjectReference Include="..\Proposal.Infra\Proposal.Infra.csproj" />
     </ItemGroup>
 
