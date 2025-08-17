@@ -1,0 +1,6 @@
+services:
+  contract.api:
+    image: ${DOCKER_REGISTRY-}contractapi
+    build:
+      context: .
+      dockerfile: src/Contract.Api/Dockerfile
