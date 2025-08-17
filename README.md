@@ -27,9 +27,9 @@ Communicate with Proposal Service to check proposal status
 
 ### Links
 
-https://github.com/leandrokuranaga/Indt/wiki
-https://github.com/users/leandrokuranaga/projects/21
-
+https://github.com/leandrokuranaga/Indt/wiki  
+https://github.com/users/leandrokuranaga/projects/21  
+https://www.youtube.com/watch?v=nHIz-2A3GU8
 
 
 ## Build & Tests
