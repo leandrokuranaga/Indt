@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Contract.Application.Contract.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Contract.Application;
 

@@ -1,7 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using Contract.Api.Extensions;
 using Contract.Api.Middlewares;
+using Contract.Application;
 using Contract.Infra;
+using Contract.Infra.Http;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,10 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddCustomMvc();
+
+builder.Services.AddInfraModuleDependency();
+builder.Services.AddApplicationModule();
+builder.Services.AddInfraHttp(builder.Configuration);
 
 builder.Services.AddGlobalCorsPolicy();
 

@@ -11,7 +11,7 @@ public class Contract : Entity, IAggregateRoot
     public DateTime ContractDate { get; set; }
     public int ProposalId { get; set; }
     public string InsuranceNameHolder { get; set; }
-    public ProposalStatusEnum ProposalStatus { get; set; }
+    public string ProposalStatus { get; set; }
     public CPF CPF { get; set; }
     public Money MonthlyBill { get; set; }
     
@@ -37,13 +37,13 @@ public class Contract : Entity, IAggregateRoot
     
     public static Contract Create(
         int proposalId,
-        ProposalStatusEnum proposalStatus,
+        string proposalStatus,
         string insuranceNameHolder,
         CPF cpf,
         Money monthlyBill,
         DateTime? contractDate = null)
     {
-        if (proposalStatus != ProposalStatusEnum.Approved)
+        if (proposalStatus != ProposalStatusEnum.Approved.ToString())
             throw new BusinessRulesException("Proposal not approved to proceed");
 
         if (string.IsNullOrWhiteSpace(insuranceNameHolder))

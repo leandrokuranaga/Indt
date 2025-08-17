@@ -22,6 +22,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Contract.Application\Contract.Application.csproj" />
       <ProjectReference Include="..\Contract.Domain\Contract.Domain.csproj" />
+      <ProjectReference Include="..\Contract.Infra.CrossCutting.Http\Contract.Infra.CrossCutting.Http.csproj" />
       <ProjectReference Include="..\Contract.Infra\Contract.Infra.csproj" />
     </ItemGroup>
 

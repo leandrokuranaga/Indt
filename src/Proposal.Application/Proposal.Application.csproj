@@ -7,15 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Validators\ProposalValidators\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Proposal.Domain\Proposal.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="FluentValidation" Version="12.0.0" />
+      <PackageReference Include="Mapster" Version="7.4.2-pre02" />
     </ItemGroup>
 
 </Project>

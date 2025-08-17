@@ -4,6 +4,7 @@
   <Folder Name="/src/Contract/Adapters/" />
   <Folder Name="/src/Contract/Adapters/Driven/">
     <Project Path="src/Contract.Infra/Contract.Infra.csproj" />
+    <Project Path="src\Contract.Infra.CrossCutting.Http\Contract.Infra.CrossCutting.Http.csproj" Type="Classic C#" />
   </Folder>
   <Folder Name="/src/Contract/Adapters/Driving/">
     <Project Path="src/Contract.Api/Contract.Api.csproj" />
