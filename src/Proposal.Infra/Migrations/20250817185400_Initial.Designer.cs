@@ -12,7 +12,7 @@ using Proposal.Infra;
 namespace Proposal.Infra.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250817163736_Initial")]
+    [Migration("20250817185400_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -130,7 +130,46 @@ namespace Proposal.Infra.Migrations
                                 });
                         });
 
+                    b.OwnsOne("Proposal.Domain.ProposalAggregate.ValueObjects.Money", "MonthlyBill", b1 =>
+                        {
+                            b1.Property<int>("ProposalId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Currency")
+                                .IsRequired()
+                                .HasMaxLength(3)
+                                .HasColumnType("varchar(3)");
+
+                            b1.Property<decimal>("Value")
+                                .HasPrecision(18, 2)
+                                .HasColumnType("decimal(18,2)");
+
+                            b1.HasKey("ProposalId");
+
+                            b1.ToTable("Proposals");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProposalId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    ProposalId = 1,
+                                    Currency = "BRL",
+                                    Value = 149.90m
+                                },
+                                new
+                                {
+                                    ProposalId = 2,
+                                    Currency = "BRL",
+                                    Value = 199.50m
+                                });
+                        });
+
                     b.Navigation("CPF")
+                        .IsRequired();
+
+                    b.Navigation("MonthlyBill")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

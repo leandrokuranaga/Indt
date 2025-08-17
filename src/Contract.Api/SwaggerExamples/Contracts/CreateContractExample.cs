@@ -11,7 +11,7 @@ namespace Contract.Api.SwaggerExamples.Contracts
             {
                 Id = 1,
                 InsuranceNameHolder = "John Doe",
-                CPF = "12345678901",
+                CPF = "20791888010",
                 Money = 100.00m
             };
         }

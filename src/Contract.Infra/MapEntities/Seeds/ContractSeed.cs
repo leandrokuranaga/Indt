@@ -1,5 +1,4 @@
-﻿// src/Contract.Infra/MapEntities/Seeds/ContractSeed.cs
-namespace Contract.Infra.MapEntities.Seeds;
+﻿namespace Contract.Infra.MapEntities.Seeds;
 
 using Contract.Domain.Contract.Enums;
 using Contract.Domain.ContractAggregate.ValueObjects;

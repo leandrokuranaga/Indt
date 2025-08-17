@@ -25,7 +25,7 @@ public class ProposalService(
     {
         Validate(request, new CreateProposalRequestValidator());
 
-        var proposal = Domain.ProposalAggregate.Proposal.Create(request.InsuranceType, request.InsuranceNameHolder, new CPF(request.CPF));
+        var proposal = Domain.ProposalAggregate.Proposal.Create(request.InsuranceType, request.InsuranceNameHolder, new CPF(request.CPF), new Money(request.MonthlyBill));
         
         await proposalRepository.InsertOrUpdateAsync(proposal);
         await proposalRepository.SaveChangesAsync();
@@ -51,7 +51,28 @@ public class ProposalService(
 
         if (request == EProposalStatus.Approved)
         {
-            var outbox = CreateOutboxMessage("object", proposal);
+            var evt = new
+            {
+                type = "object",
+                version = 1,
+                data = new
+                {
+                    ProposalId = proposal.Id,
+                    InsuranceNameHolder = proposal.InsuranceNameHolder,
+                    CPF = proposal.CPF.Value.ToString(),                   
+                    MonthlyBill = proposal.MonthlyBill.Value            
+                }
+            };
+
+            var payload = JsonSerializer.Serialize(evt);
+
+            var outbox = new Outbox
+            {
+                Id = Guid.NewGuid(),
+                Type = "plain-json",
+                Content = payload,
+                OccuredOn = DateTime.UtcNow
+            };
 
             await outboxRepository.InsertOrUpdateAsync(outbox);
             await outboxRepository.SaveChangesAsync();

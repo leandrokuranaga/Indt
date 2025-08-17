@@ -34,4 +34,10 @@ public static class ProposalSeed
         new { ProposalId = 1, Value = "07038612042" },
         new { ProposalId = 2, Value = "20791888010" }
     ];
+
+    public static IEnumerable<object> MonthlyBillOwned() =>
+    [
+        new { ProposalId = 1, Value = 149.90m, Currency = "BRL" },
+        new { ProposalId = 2, Value = 199.50m, Currency = "BRL" }
+    ];
 }

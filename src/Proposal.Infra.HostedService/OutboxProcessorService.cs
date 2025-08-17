@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Proposal.Application.Proposal.Models.Response;
 using Proposal.Domain.OutboxAggregate;
 using Rebus.Bus;
 using System.Text.Json;
@@ -58,7 +59,7 @@ namespace Proposal.Infra.HostedService
                     logger.LogWarning("Empty content for outbox message {OutboxId}. Marking as processed.", outbox.Id);
                     success = true;
                 }
-                else if (outbox.Type == "object")
+                else if (outbox.Type == "plain-json")
                 {
                     try
                     {

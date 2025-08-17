@@ -8,4 +8,5 @@ public record ProposalRequest
     public EInsuranceType InsuranceType { get; set; }
     public string InsuranceNameHolder { get; set; }
     public string CPF { get; set; }
+    public decimal MonthlyBill { get; set; }
 }

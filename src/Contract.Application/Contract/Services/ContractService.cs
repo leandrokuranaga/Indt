@@ -20,14 +20,6 @@ public class ContractService(
 {
     public async Task<ContractResponse> ContractProposalAsync(ContractRequest request)
     {
-        var proposal = await repository.GetOneNoTracking(c => c.ProposalId == request.Id);
-
-        if (proposal == null)
-        {
-            notification.AddNotification("Proposal", "Proposal not found", NotificationModel.ENotificationType.NotFound);
-            return null!;
-        }
-
         ContractAggregate.Domain.Contract contract;
 
         contract = ContractAggregate.Domain.Contract.Create(

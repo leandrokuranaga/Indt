@@ -49,6 +49,9 @@ namespace Proposal.Infra.Migrations
                     InsuranceNameHolder = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CPF = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MonthlyBill_Value = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    MonthlyBill_Currency = table.Column<string>(type: "varchar(3)", maxLength: 3, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -59,11 +62,11 @@ namespace Proposal.Infra.Migrations
 
             migrationBuilder.InsertData(
                 table: "Proposals",
-                columns: new[] { "Id", "CreationDate", "InsuranceNameHolder", "InsuranceType", "ProposalStatus", "CPF" },
+                columns: new[] { "Id", "CreationDate", "InsuranceNameHolder", "InsuranceType", "ProposalStatus", "CPF", "MonthlyBill_Currency", "MonthlyBill_Value" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc), "John Doe", "Life", "Approved", "07038612042" },
-                    { 2, new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Jane Doe", "Health", "Approved", "20791888010" }
+                    { 1, new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc), "John Doe", "Life", "Approved", "07038612042", "BRL", 149.90m },
+                    { 2, new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Jane Doe", "Health", "Approved", "20791888010", "BRL", 199.50m }
                 });
         }
 

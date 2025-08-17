@@ -29,6 +29,19 @@ public class ProposalMap: IEntityTypeConfiguration<Domain.ProposalAggregate.Prop
             cpf.HasData(Seeds.ProposalSeed.CpfOwned());
         });
 
+        builder.OwnsOne(c => c.MonthlyBill, mb =>
+        {
+            mb.Property(p => p.Value)
+                .HasPrecision(18, 2)
+                .IsRequired();
+
+            mb.Property(p => p.Currency)
+                .HasMaxLength(3)
+                .IsRequired();
+
+            mb.HasData(Seeds.ProposalSeed.MonthlyBillOwned());
+        });
+
         builder.Property(c => c.InsuranceNameHolder).IsRequired();
 
 

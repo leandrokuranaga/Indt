@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Proposal.Api.Extensions;
 using Proposal.Api.Middlewares;
 using Proposal.Application;
+using Proposal.Application.Proposal.Models.Response;
 using Proposal.Infra;
 using Proposal.Infra.HostedService;
 using Rebus.Config;
@@ -20,11 +21,8 @@ builder.Services.AddDbContext<Context>(options =>
 
 builder.Services.AddHostedService<OutboxProcessorService>();
 
-builder.Services.AddRebus(configure => configure
-    .Transport(t => t.UseRabbitMqAsOneWayClient(
-        builder.Configuration.GetConnectionString("Rabbitmq")))
-    .Routing(r => r.TypeBased()
-        .MapFallback("proposal-queue")));
+builder.Services.AddRebus(cfg => cfg
+    .Transport(t => t.UseRabbitMqAsOneWayClient(builder.Configuration.GetConnectionString("RabbitMq"))));
 
 builder.Services.AddGlobalCorsPolicy();
 builder.Services.AddCustomMvc();

@@ -14,32 +14,27 @@ public class Proposal : Entity, IAggregateRoot
     public EInsuranceType InsuranceType { get; set; }
     public string InsuranceNameHolder { get; set; }
     public CPF CPF { get; set; }
-
+    public Money MonthlyBill { get; set; }
 
     public Proposal()
     {
 
     }
-
-    public Proposal(
-        UtcDate creationDate,
-        EProposalStatus proposalStatus,
-        EInsuranceType insuranceType,
-        string insuranceNameHolder,
-        CPF cPF
-        )
+    public Proposal(UtcDate creationDate, EProposalStatus proposalStatus, EInsuranceType insuranceType, string insuranceNameHolder, CPF cPF, Money monthlyBill)
     {
         CreationDate = creationDate;
         ProposalStatus = proposalStatus;
         InsuranceType = insuranceType;
         InsuranceNameHolder = insuranceNameHolder;
         CPF = cPF;
+        MonthlyBill = monthlyBill;
     }
 
     public static Proposal Create(
         EInsuranceType insuranceType,
         string insuranceNameHolder,
-        CPF cPF
+        CPF cPF,
+        Money monthlyBill
         )
     {
         if (!Enum.IsDefined(typeof(EInsuranceType), insuranceType))
@@ -51,12 +46,16 @@ public class Proposal : Entity, IAggregateRoot
         if (cPF is null || !cPF.IsValid)
             throw new BusinessRulesException("Invalid CPF");
 
+        if (monthlyBill.Value < 0)
+            throw new BusinessRulesException("Monthly bill must be greater than or equal to 0");
+
         return new Proposal(
             new UtcDate(DateTime.UtcNow),
             EProposalStatus.InAnalysis,
             insuranceType,
             insuranceNameHolder.Trim(),
-            cPF
+            cPF,
+            monthlyBill
             );
     }
 
