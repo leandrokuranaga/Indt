@@ -35,4 +35,4 @@ https://www.youtube.com/watch?v=nHIz-2A3GU8
 ## Build & Tests
 | CI | Status |
 | --- | --- | 
-| Validação PR| [![Pré-validação de Release/Hotfix](https://github.com/leandrokuranaga/anima/actions/workflows/validate-release-pr.yml/badge.svg)](https://github.com/leandrokuranaga/anima/actions/workflows/validate-release-pr.yml)
+| Validação PR| [![Pré-validação de Release/Hotfix](https://github.com/leandrokuranaga/indt/actions/workflows/validate-release-pr.yml/badge.svg)](https://github.com/leandrokuranaga/indt/actions/workflows/validate-release-pr.yml)
