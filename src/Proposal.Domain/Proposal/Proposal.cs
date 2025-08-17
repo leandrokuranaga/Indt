@@ -22,18 +22,12 @@ public class Proposal : Entity, IAggregateRoot
         InsuranceType = insuranceType;
     }
     
-    public static Proposal Create(EInsuranceType insuranceType, EProposalStatus? initialStatus = null)
+    public static Proposal Create(EInsuranceType insuranceType)
     {
-        var status = initialStatus ?? EProposalStatus.InAnalysis;
-        var creationDate = DateTime.Now;
-
         if (!Enum.IsDefined(typeof(EInsuranceType), insuranceType))
-            throw new ArgumentException("Invalid Insurance type", nameof(insuranceType));
+            throw new ArgumentException("Invalid insurance", nameof(insuranceType));
 
-        if (!Enum.IsDefined(typeof(EProposalStatus), status))
-            throw new ArgumentException("Invlaid Initial Status", nameof(initialStatus));
-
-        return new Proposal(insuranceType, status, creationDate);
+        return new Proposal(insuranceType, EProposalStatus.InAnalysis, DateTime.UtcNow);
     }
 
     public void SetStatus(EProposalStatus newStatus)

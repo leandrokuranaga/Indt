@@ -1,6 +1,8 @@
-﻿namespace Proposal.Application.Proposal.Models.Request;
+﻿using Proposal.Domain.Enums;
 
-public class ProposalRequest
+namespace Proposal.Application.Proposal.Models.Request;
+
+public record ProposalRequest
 {
-    
+    public EInsuranceType InsuranceType { get; set; }
 }

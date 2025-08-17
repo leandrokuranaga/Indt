@@ -6,4 +6,5 @@ namespace Contract.Application.Contract.Services;
 public interface IContractService
 {
     Task<ContractResponse> ContractProposalAsync(ContractRequest request);
+    Task<ContractResponse> GetContractByIdAsync(int contractId);
 }

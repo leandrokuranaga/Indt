@@ -8,7 +8,7 @@ namespace Contract.Infra;
 
 public static class InfraModuleDependency
 {
-    public static void AddInfraModuleDependency(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfraModuleDependency(this IServiceCollection services)
     {
         services.AddScoped<INotification, Notification>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();

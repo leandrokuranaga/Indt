@@ -19,14 +19,12 @@ public class ContractController(
     /// <summary>
     /// Contract a new proposal (only if its approved)
     /// </summary>
-    /// <param name="request">The game data required to create a new entry in the system.</param>
-    /// <returns>A response containing the created game, or an error message if the input is invalid.</returns>
+    /// <param name="request">The contract data required to create a new entry in the system.</param>
+    /// <returns>A response containing the created proposal, or an error message if the input is invalid.</returns>
     [HttpPost]
     [SwaggerOperation(
         Summary = "Contract a new proposal",
-        Description = "Contract a new proposal (only if its approved)",
-        OperationId = "Contract.Create",
-        Tags = new[] { "Contract" }
+        Description = "Contract a new proposal (only if its approved)"
     )]
     [ProducesResponseType(typeof(BaseResponse<ContractResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BaseResponse<object>), StatusCodes.Status400BadRequest)]
@@ -38,6 +36,28 @@ public class ContractController(
     public async Task<IActionResult> Create([FromBody] ContractRequest request)
     {
         var result = await contractService.ContractProposalAsync(request);
+        return Response(BaseResponse<ContractResponse>.Ok(result));
+    }
+    
+    /// <summary>
+    /// Get contract by id
+    /// </summary>
+    /// <returns>A response containing the contract.</returns>
+    [HttpGet("{id:int:min(1)}")]
+    [SwaggerOperation(
+        Summary = "Get Contract by id",
+        Description = "Get Contract by id available in the system."
+    )]
+    [ProducesResponseType(typeof(BaseResponse<ContractResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(BaseResponse<object>), StatusCodes.Status400BadRequest)]
+    [SwaggerResponseExample(StatusCodes.Status400BadRequest, typeof(GenericErrorBadRequestExample))]
+    [ProducesResponseType(typeof(BaseResponse<object>), StatusCodes.Status409Conflict)]
+    [SwaggerResponseExample(StatusCodes.Status409Conflict, typeof(GenericErrorConflictExample))]
+    [ProducesResponseType(typeof(BaseResponse<object>), StatusCodes.Status500InternalServerError)]
+    [SwaggerResponseExample(StatusCodes.Status500InternalServerError, typeof(GenericErrorInternalServerExample))]
+    public async Task<IActionResult> GetAsync(int id)
+    {
+        var result = await contractService.GetContractByIdAsync(id);
         return Response(BaseResponse<ContractResponse>.Ok(result));
     }
 }
